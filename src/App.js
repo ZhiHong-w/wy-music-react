@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { memo, Suspense } from 'react';
+import { renderRoutes } from 'react-router-config';
+import { HashRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import routes from './router';
+import store from '@/store';
+import WYAppHeader from '@/components/app-header';
+import WYAppFooter from '@/components/app-footer';
+import WYAppPlayerBar from './pages/player/app-player-bar'
 
-export default App;
+export default memo(function App(props) {
+    return (
+        <Provider store={store}>
+            <HashRouter>
+                <WYAppHeader></WYAppHeader>
+                <Suspense fallback={<div>loading...</div>}>
+                    {renderRoutes(routes)}
+                </Suspense>
+                <WYAppFooter></WYAppFooter>
+                <WYAppPlayerBar></WYAppPlayerBar>
+            </HashRouter>
+        </Provider>
+    )
+})
+
