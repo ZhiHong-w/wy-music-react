@@ -18,8 +18,8 @@ export function handleSongsCategory(data) {
     return categoryData;
   }
   
-  // 获取歌手字母类别
-  export function generateSingerAlpha() {
+// 获取歌手字母类别
+export function generateSingerAlpha() {
     var alphabets = ["-1"];
     var start = 'A'.charCodeAt(0);
     var last  = 'Z'.charCodeAt(0);

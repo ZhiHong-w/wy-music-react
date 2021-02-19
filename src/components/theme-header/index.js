@@ -7,7 +7,7 @@ import {
 } from './style';
 
 function WYThemeHeader(props) {
-    const { title,keywords,rightIsPlay } = props;
+    const { title="歌曲列表",keywords,rightIsPlay } = props;
     
     return (
         <HeaderWrapper className="sprite-02" rightIsPlay={rightIsPlay}>
